@@ -61,3 +61,21 @@ Petit exercice
 L’équipe veut calculer le délai moyen de rappel à partir d’un tableau avec le nom, le téléphone, les dates de sortie et de rappel, et le diagnostic. Quels champs conserver pour le calcul ?
 
 Réponse attendue. Les deux dates suffisent pour calculer le délai. Si le délai figure déjà dans le tableau, il suffit à lui seul pour calculer la moyenne.
+
+5. Protéger les personnes et organiser le travail
+L’hôpital limite les accès selon les tâches de chacun. Voici une répartition possible.
+Rôle	Données nécessaires à la tâche
+Équipe soignante chargée des rappels	Identité, coordonnées et éléments cliniques utiles au suivi des patients dont elle a la charge.
+Équipe d’analyse	Données strictement nécessaires à l’étude, pseudonymisées lorsque c’est possible. Pour une moyenne de délais, les délais seuls peuvent suffire.
+Personnes habilitées à gérer les correspondances	Table qui relie les codes aux identités, conservée à part avec un accès restreint.
+
+
+Des comptes nominatifs et des droits par rôle permettent de savoir qui peut consulter chaque fichier. L’hôpital peut journaliser les accès, revoir les habilitations et les retirer lorsqu’une personne change de fonction.
+
+Si un patient signale une donnée inexacte, il peut exercer son droit de rectification (article 16). Il adresse sa demande à l’hôpital, responsable du traitement, via le canal prévu dans la notice de confidentialité. Il peut aussi contacter le délégué à la protection des données (DPD ou DPO) de l’hôpital au sujet de sa demande. L’hôpital peut faire vérifier une erreur clinique par le service compétent.
+
+Source officielle — RGPD, articles 5, 16, 32 et 38.
+Petit exercice
+Un analyste demande les numéros de téléphone pour calculer un délai moyen. Un patient signale que son adresse est erronée. Que réponds-tu à chacun ?
+
+Réponse attendue. L’analyste peut calculer la moyenne avec les délais seuls. Le patient peut demander la rectification de son adresse auprès de l’hôpital et contacter son DPD.
