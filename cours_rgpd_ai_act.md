@@ -94,3 +94,16 @@ Petit exercice
 L’assistant des horaires reçoit une nouvelle fonction qui classe les patients aux urgences par ordre de passage. Quelle partie de son usage faut-il réexaminer ?
 
 Réponse attendue. Il faut examiner la fonction de triage au regard des règles sur le haut risque, car ses suggestions peuvent modifier le délai de prise en charge.
+
+7. Évaluer une IA au-delà de sa performance globale
+Sur 100 patients, 10 sont réhospitalisés. En prédisant « aucune réhospitalisation » pour tous, le modèle classe correctement 90 patients sur 100. Dans cet exercice, si les réhospitalisations servent de repère pour évaluer quels patients auraient dû être signalés, il en a repéré zéro sur dix.
+
+Le rappel, ou sensibilité, mesure la part des patients effectivement réhospitalisés que le modèle a signalés. Ici, le rappel vaut 0 ÷ 10 = 0 %. Les 10 cas manqués sont des faux négatifs. La part de cas manqués est le complément du rappel dès qu’il y a au moins un cas positif observé.
+
+Pour comparer les tranches d’âge, utilise les mêmes règles de prédiction et la même période de suivi dans un jeu de test distinct de l’entraînement. Dans chaque tranche, divise le nombre de patients réhospitalisés et manqués par le nombre total de patients réhospitalisés. Compare les proportions et indique les effectifs. Une tranche avec très peu de réhospitalisations peut donner un taux instable. Si aucune réhospitalisation n’y est observée, le taux n’est pas calculable.
+
+Sources — Google for Developers, rappel et faux négatifs et guide HAS–CNIL sur le bon usage de l’IA en contexte de soins.
+Petit exercice
+Dans un second test, le modèle manque 2 patients sur 4 réhospitalisés chez les moins de 65 ans et 2 sur 6 chez les 65 ans et plus. Pour quelle tranche la part de cas manqués est-elle la plus élevée ?
+
+Réponse attendue. Chez les moins de 65 ans, avec 50 % de cas manqués contre environ 33 % chez les 65 ans et plus. Les effectifs sont trop faibles pour tirer une conclusion solide sur un écart durable.
