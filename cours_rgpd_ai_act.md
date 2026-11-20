@@ -79,3 +79,18 @@ Petit exercice
 Un analyste demande les numéros de téléphone pour calculer un délai moyen. Un patient signale que son adresse est erronée. Que réponds-tu à chacun ?
 
 Réponse attendue. L’analyste peut calculer la moyenne avec les délais seuls. Le patient peut demander la rectification de son adresse auprès de l’hôpital et contacter son DPD.
+
+6. Comprendre l’AI Act à partir des usages
+La destination du système correspond à l’usage pour lequel il est conçu. Dans le même hôpital, deux IA peuvent donc soulever des questions très différentes.
+Usage prévu	Effet possible d’une erreur	Obligations à examiner
+Répondre aux questions sur les horaires de visite	Un visiteur peut se déplacer pour rien. L’outil diffuse des informations pratiques.	Pour un assistant qui échange avec le public, l’article 50 prévoit d’informer les utilisateurs qu’ils interagissent avec une IA, sauf si cela ressort clairement du contexte.
+Aider à fixer l’ordre de passage aux urgences	Une mauvaise priorité peut retarder la prise en charge d’un patient.	Le tri des patients aux urgences figure à l’annexe III, point 5 d). Si l’outil influence l’ordre de passage, il relève en principe du haut risque. Il faut examiner notamment la gestion des risques, la qualité des données, le contrôle humain et les obligations de l’hôpital en tant que déployeur.
+
+
+Le fait qu’un soignant valide la priorité fait partie de l’organisation du contrôle humain. Pour déterminer les règles applicables, il faut aussi examiner l’influence réelle de la suggestion sur la décision.
+
+Sources officielles — Présentation de l’AI Act par la Commission européenne et règlement (UE) 2024/1689, articles 6, 9, 10, 14, 26 et 50 et annexe III.
+Petit exercice
+L’assistant des horaires reçoit une nouvelle fonction qui classe les patients aux urgences par ordre de passage. Quelle partie de son usage faut-il réexaminer ?
+
+Réponse attendue. Il faut examiner la fonction de triage au regard des règles sur le haut risque, car ses suggestions peuvent modifier le délai de prise en charge.
