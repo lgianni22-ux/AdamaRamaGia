@@ -50,3 +50,14 @@ Petit exercice
 L’équipe ne reçoit jamais la table qui associe les codes aux noms. Elle apprend qu’un bulletin communal identifie la seule personne de 102 ans dans la commune de P037. Quelles informations permettent le rapprochement ? Quel critère de la CNIL est illustré ?
 
 Réponse attendue. L’âge exact et la commune permettent de relier la ligne au bulletin. C’est un exemple de corrélation entre deux sources.
+
+4. Définir l’usage des dossiers
+Avant d’extraire des données, l’hôpital précise pourquoi il en a besoin. Calculer le délai moyen entre une sortie et un appel est un objectif différent de prédire quels patients risquent une réhospitalisation. Si l’hôpital veut réutiliser les dossiers pour cette nouvelle finalité, il doit vérifier à quelles conditions cette réutilisation est autorisée. Pour un traitement de données de santé, il lui faut une base juridique au titre de l’article 6 et une exception applicable au titre de l’article 9.
+
+Le principe de minimisation consiste à limiter les données à celles qui sont nécessaires à l’objectif. Pour calculer le délai de rappel, l’équipe peut travailler avec les deux dates, ou avec le délai déjà calculé. Elle peut écarter le nom, le numéro de téléphone et le diagnostic si ces champs ne sont pas nécessaires au calcul.
+
+Source officielle — RGPD, articles 5, 6 et 9.
+Petit exercice
+L’équipe veut calculer le délai moyen de rappel à partir d’un tableau avec le nom, le téléphone, les dates de sortie et de rappel, et le diagnostic. Quels champs conserver pour le calcul ?
+
+Réponse attendue. Les deux dates suffisent pour calculer le délai. Si le délai figure déjà dans le tableau, il suffit à lui seul pour calculer la moyenne.
