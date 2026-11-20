@@ -107,3 +107,14 @@ Petit exercice
 Dans un second test, le modèle manque 2 patients sur 4 réhospitalisés chez les moins de 65 ans et 2 sur 6 chez les 65 ans et plus. Pour quelle tranche la part de cas manqués est-elle la plus élevée ?
 
 Réponse attendue. Chez les moins de 65 ans, avec 50 % de cas manqués contre environ 33 % chez les 65 ans et plus. Les effectifs sont trop faibles pour tirer une conclusion solide sur un écart durable.
+
+8. Appliquer les notions à un projet
+Je conseillerais à l’hôpital de commencer par un test rétrospectif, à condition d’avoir établi que les données peuvent être utilisées à cette fin. Les résultats du test restent en dehors du circuit de décision sur les rappels.
+1. Définir l’objectif et les données utiles. Avec l’équipe soignante et le DPD, préciser ce que l’outil doit aider à repérer, vérifier la base juridique et la condition applicable aux données de santé, puis examiner si une analyse d’impact est requise. Si l’objectif est de prévoir une réhospitalisation à 30 jours, les données de test peuvent inclure la date de sortie, des informations pertinentes connues au moment de la prédiction et l’issue observée dans les 30 jours. Cette issue sert à vérifier la prédiction. Les analystes peuvent travailler avec des données pseudonymisées et des accès limités.
+2. Vérifier les cas manqués avant tout usage en soins. Tester le modèle sur des dossiers plus récents que ceux utilisés pour l’entraînement. À nombre de rappels comparable, mesurer combien de patients réhospitalisés le modèle repère et combien il manque, globalement et par tranche d’âge. Comparer ces résultats au processus actuel si les données le permettent. L’équipe clinique doit aussi vérifier si la réhospitalisation constitue un bon repère pour le besoin réel de suivi.
+3. Décider des suites avec l’équipe de soins. Pour trancher, il faut connaître le nombre de patients que l’équipe peut rappeler, le niveau de cas manqués acceptable, les effectifs par tranche d’âge et la manière dont le score pèserait sur les décisions. Ces éléments aident à juger l’utilité du système et à examiner son statut au regard de l’AI Act. Si le test est concluant, un essai en conditions réelles peut d’abord mesurer les suggestions sans modifier les rappels.
+Sources officielles — RGPD, articles 5, 6, 9 et 35, AI Act, article 6 et guide HAS–CNIL sur le bon usage de l’IA en contexte de soins.
+Petit exercice
+Le modèle obtient 90 % de prédictions correctes, mais l’équipe ignore combien de patients réhospitalisés il manque. Quelle vérification demandes-tu avant de modifier les rappels ?
+
+Réponse attendue. Mesurer le rappel et les cas manqués sur des dossiers de test distincts de ceux de l’entraînement, globalement et par tranche d’âge, puis examiner ces résultats avec les soignants au regard de la capacité de rappel.
