@@ -35,3 +35,18 @@ Petit exercice
 L’hôpital retire le nom d’une ligne contenant « 47 ans, commune de Val-des-Prés, diabète de type 2 ». Une personne qui a accès au tableau dispose aussi d’une liste nominative des habitants où une seule personne de cette commune a 47 ans. Peut-elle retrouver de qui il s’agit ? Le diagnostic est-il toujours une donnée de santé ?
 
 Réponse attendue. Oui. Elle peut faire le lien entre les deux listes grâce à l’âge et à la commune. Le diagnostic reste une donnée de santé puisqu’il révèle une information médicale sur la personne ainsi identifiée.
+
+3. Pseudonymiser n’est pas anonymiser
+L’hôpital remplace le nom de chaque patient par un code et conserve séparément la table qui relie les codes aux noms. Le fichier transmis à l’équipe est pseudonymisé. L’hôpital peut retrouver les noms à l’aide de la table. Le fichier contient donc toujours des données personnelles et le RGPD continue de s’appliquer.
+Comment reconnaître un patient sans la table ?
+Imaginons qu’une ligne mentionne le code P037, l’âge exact de 102 ans et une petite commune. Si un bulletin communal a publié le nom et l’âge de la seule personne de 102 ans qui y habite, on peut rapprocher les deux sources. Ce recoupement permet d’associer le diagnostic de la ligne à la personne nommée dans le bulletin. Les dates précises d’hospitalisation ou un diagnostic rare peuvent aussi faciliter un rapprochement avec une autre source.
+Comment évaluer l’anonymisation ?
+Pour parler d’anonymisation, il faut que l’identification ne soit plus possible en pratique avec les moyens raisonnablement utilisables. La CNIL propose d’examiner trois possibilités.
+- Individualisation — Peut-on isoler un patient dans le fichier, par exemple grâce à un âge exceptionnel ?
+- Corrélation — Peut-on relier ses données à celles d’une autre source, comme le bulletin communal ?
+- Inférence — Peut-on déduire avec une quasi-certitude une information sur ce patient, par exemple son diagnostic si tous les membres du petit groupe auquel on sait qu’il appartient ont le même diagnostic ?
+Source officielle — CNIL, L’anonymisation de données personnelles.
+Petit exercice
+L’équipe ne reçoit jamais la table qui associe les codes aux noms. Elle apprend qu’un bulletin communal identifie la seule personne de 102 ans dans la commune de P037. Quelles informations permettent le rapprochement ? Quel critère de la CNIL est illustré ?
+
+Réponse attendue. L’âge exact et la commune permettent de relier la ligne au bulletin. C’est un exemple de corrélation entre deux sources.
