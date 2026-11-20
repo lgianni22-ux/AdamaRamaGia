@@ -15,3 +15,23 @@ Petit exercice
 L’équipe ajoute les diagnostics au tableau qui sert à calculer le délai moyen de rappel. Ensuite, une IA classe un patient nécessitant un suivi rapide en bas de sa liste. À quel règlement rattaches-tu chacune des questions soulevées par ces deux situations ?
 
 Réponse attendue. Le RGPD invite à vérifier si les diagnostics sont nécessaires au calcul et si leur utilisation est autorisée. L’AI Act invite à examiner le risque qu’une mauvaise suggestion retarde le suivi, ainsi que les règles applicables à cet usage de l’IA.
+
+2. Reconnaître une donnée personnelle
+Le RGPD appelle donnée personnelle toute information qui se rapporte à une personne identifiée ou identifiable. On peut reconnaître cette personne directement ou en combinant plusieurs informations auxquelles on peut raisonnablement accéder.
+Que révèle chaque information ?
+Information dans le dossier	Comment peut-elle aider à reconnaître la personne ?
+Nom et prénom	Ils peuvent identifier directement la personne. En cas d’homonymie, une autre information peut être nécessaire.
+Âge	Seul, un âge comme 47 ans correspond à de nombreuses personnes. Associé à la commune ou à d’autres renseignements, il peut aider à retrouver la personne.
+Commune	Seule, elle désigne un lieu. Associée à l’âge, elle peut permettre de reconnaître quelqu’un, notamment dans une petite commune si on dispose d’une autre liste.
+Diagnostic	Il renseigne sur l’état de santé. S’il est rare, il peut aussi aider à reconnaître la personne lorsqu’on le recoupe avec d’autres informations.
+
+
+L’âge et la commune sont déjà des données personnelles lorsqu’ils figurent dans le dossier d’une personne identifiable. Si l’hôpital retire le nom, il faut encore vérifier si quelqu’un peut raisonnablement reconnaître le patient grâce aux informations restantes.
+Pourquoi le diagnostic est-il une donnée de santé ?
+Le diagnostic est une donnée de santé parce qu’il révèle une information sur l’état de santé physique ou mentale d’une personne identifiable. Par exemple, « diabète de type 2 » dans un manuel décrit une maladie. Le même diagnostic dans le dossier d’un patient identifiable révèle une information sur sa santé. Le RGPD prévoit une protection particulière pour ces données à l’article 9.
+
+Source officielle — RGPD, règlement (UE) 2016/679, article 4 (points 1 et 15), article 9 et considérants 26 et 35.
+Petit exercice
+L’hôpital retire le nom d’une ligne contenant « 47 ans, commune de Val-des-Prés, diabète de type 2 ». Une personne qui a accès au tableau dispose aussi d’une liste nominative des habitants où une seule personne de cette commune a 47 ans. Peut-elle retrouver de qui il s’agit ? Le diagnostic est-il toujours une donnée de santé ?
+
+Réponse attendue. Oui. Elle peut faire le lien entre les deux listes grâce à l’âge et à la commune. Le diagnostic reste une donnée de santé puisqu’il révèle une information médicale sur la personne ainsi identifiée.
