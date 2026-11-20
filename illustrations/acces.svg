@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="251" viewBox="0 0 760 251" role="img" aria-labelledby="title description">
+  <title id="title">Adapter les accès aux tâches</title>
+  <desc id="description">Soignants → coordonnées et éléments cliniques utiles au suivi. Analystes → délais seuls pour calculer une moyenne. Personnes habilitées → table des codes et des identités. La table de correspondance est conservée à part avec un accès restreint.</desc>
+  <rect width="760" height="251" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">Adapter les accès aux tâches</text>
+    <rect x="24" y="60" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="86" font-size="17" font-weight="600">Soignants → coordonnées et éléments cliniques utiles au suivi</text>
+    <rect x="24" y="109" width="712" height="40" rx="9" fill="#e9e0f8"/>
+    <text x="40" y="135" font-size="17" font-weight="600">Analystes → délais seuls pour calculer une moyenne</text>
+    <rect x="24" y="158" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="184" font-size="17" font-weight="600">Personnes habilitées → table des codes et des identités</text>
+    <text x="24" y="231" font-size="16">La table de correspondance est conservée à part avec un accès restreint.</text>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="202" viewBox="0 0 760 202" role="img" aria-labelledby="title description">
+  <title id="title">Calculer le délai moyen de rappel</title>
+  <desc id="description">Date de rappel − date de sortie → délai individuel. Délais individuels → moyenne des délais. Si les délais sont déjà calculés, ils suffisent pour obtenir la moyenne.</desc>
+  <rect width="760" height="202" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">Calculer le délai moyen de rappel</text>
+    <rect x="24" y="60" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="86" font-size="17" font-weight="600">Date de rappel − date de sortie → délai individuel</text>
+    <rect x="24" y="109" width="712" height="40" rx="9" fill="#e9e0f8"/>
+    <text x="40" y="135" font-size="17" font-weight="600">Délais individuels → moyenne des délais</text>
+    <text x="24" y="182" font-size="16">Si les délais sont déjà calculés, ils suffisent pour obtenir la moyenne.</text>
+  </g>
+</svg>

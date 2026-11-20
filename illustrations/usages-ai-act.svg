@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="202" viewBox="0 0 760 202" role="img" aria-labelledby="title description">
+  <title id="title">Deux usages de l’IA à l’hôpital</title>
+  <desc id="description">Horaires de visite → déplacement inutile en cas d’erreur. Tri aux urgences → prise en charge retardée en cas d’erreur. Examiner la transparence pour l’assistant et le haut risque pour le tri.</desc>
+  <rect width="760" height="202" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">Deux usages de l’IA à l’hôpital</text>
+    <rect x="24" y="60" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="86" font-size="17" font-weight="600">Horaires de visite → déplacement inutile en cas d’erreur</text>
+    <rect x="24" y="109" width="712" height="40" rx="9" fill="#e9e0f8"/>
+    <text x="40" y="135" font-size="17" font-weight="600">Tri aux urgences → prise en charge retardée en cas d’erreur</text>
+    <text x="24" y="182" font-size="16">Examiner la transparence pour l’assistant et le haut risque pour le tri.</text>
+  </g>
+</svg>

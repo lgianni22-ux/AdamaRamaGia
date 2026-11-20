@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="251" viewBox="0 0 760 251" role="img" aria-labelledby="title description">
+  <title id="title">Du test rétrospectif à la décision</title>
+  <desc id="description">Préparer → objectif, données et conditions d’usage. Tester → rappel et cas manqués par tranche d’âge. Décider avec les soignants → capacité de rappel et rôle du score. Si le test est concluant, observer les suggestions sans modifier les rappels.</desc>
+  <rect width="760" height="251" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">Du test rétrospectif à la décision</text>
+    <rect x="24" y="60" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="86" font-size="17" font-weight="600">Préparer → objectif, données et conditions d’usage</text>
+    <rect x="24" y="109" width="712" height="40" rx="9" fill="#e9e0f8"/>
+    <text x="40" y="135" font-size="17" font-weight="600">Tester → rappel et cas manqués par tranche d’âge</text>
+    <rect x="24" y="158" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="184" font-size="17" font-weight="600">Décider avec les soignants → capacité de rappel et rôle du score</text>
+    <text x="24" y="231" font-size="16">Si le test est concluant, observer les suggestions sans modifier les rappels.</text>
+  </g>
+</svg>

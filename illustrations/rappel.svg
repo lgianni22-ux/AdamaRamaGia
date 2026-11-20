@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="202" viewBox="0 0 760 202" role="img" aria-labelledby="title description">
+  <title id="title">90 % de prédictions correctes, 0 % de rappel</title>
+  <desc id="description">90 sur 100 → prédictions correctes. 0 sur 10 → réhospitalisations signalées. Le modèle ne signale personne et manque les 10 réhospitalisations fictives.</desc>
+  <rect width="760" height="202" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">90 % de prédictions correctes, 0 % de rappel</text>
+    <rect x="24" y="60" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="86" font-size="17" font-weight="600">90 sur 100 → prédictions correctes</text>
+    <rect x="454" y="74" width="260" height="12" rx="6" fill="#fff"/>
+    <rect x="454" y="74" width="234" height="12" rx="6" fill="#29578f"/>
+    <rect x="24" y="109" width="712" height="40" rx="9" fill="#e9e0f8"/>
+    <text x="40" y="135" font-size="17" font-weight="600">0 sur 10 → réhospitalisations signalées</text>
+    <rect x="454" y="123" width="260" height="12" rx="6" fill="#fff"/>
+    <text x="24" y="182" font-size="16">Le modèle ne signale personne et manque les 10 réhospitalisations fictives.</text>
+  </g>
+</svg>

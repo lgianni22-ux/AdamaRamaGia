@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="251" viewBox="0 0 760 251" role="img" aria-labelledby="title description">
+  <title id="title">Évaluer l’anonymisation</title>
+  <desc id="description">Individualisation → Peut-on isoler une personne ?. Corrélation → Peut-on relier deux sources ?. Inférence → Peut-on déduire une information ?. Un fichier codé reste pseudonymisé si une table permet de retrouver les noms.</desc>
+  <rect width="760" height="251" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">Évaluer l’anonymisation</text>
+    <rect x="24" y="60" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="86" font-size="17" font-weight="600">Individualisation → Peut-on isoler une personne ?</text>
+    <rect x="24" y="109" width="712" height="40" rx="9" fill="#e9e0f8"/>
+    <text x="40" y="135" font-size="17" font-weight="600">Corrélation → Peut-on relier deux sources ?</text>
+    <rect x="24" y="158" width="712" height="40" rx="9" fill="#dceafd"/>
+    <text x="40" y="184" font-size="17" font-weight="600">Inférence → Peut-on déduire une information ?</text>
+    <text x="24" y="231" font-size="16">Un fichier codé reste pseudonymisé si une table permet de retrouver les noms.</text>
+  </g>
+</svg>
