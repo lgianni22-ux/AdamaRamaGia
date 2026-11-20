@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="304" viewBox="0 0 760 304" role="img" aria-labelledby="title description">
+  <title id="title">Le RGPD et l’AI Act dans un projet de rappel hospitalier</title>
+  <desc id="description">Le RGPD encadre les données personnelles pendant l’analyse des dossiers et la priorisation des rappels. L’AI Act ajoute un examen de l’usage du système et de ses risques lors de la seconde étape.</desc>
+  <rect width="760" height="304" rx="16" fill="#f5f7fb"/>
+  <g font-family="system-ui, sans-serif" fill="#17243a">
+    <text x="24" y="40" font-size="23" font-weight="700">Du calcul des délais à la priorisation des rappels</text>
+    <rect x="24" y="65" width="332" height="65" rx="10" fill="#fff" stroke="#a8b6ca"/>
+    <rect x="404" y="65" width="332" height="65" rx="10" fill="#fff" stroke="#a8b6ca"/>
+    <path d="M368 97h23m-7-7 7 7-7 7" fill="none" stroke="#435875" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <g font-size="18" font-weight="650">
+      <text x="42" y="104">Analyser les dossiers</text>
+      <text x="422" y="104">Prioriser les rappels avec une IA</text>
+    </g>
+    <rect x="24" y="148" width="712" height="58" rx="10" fill="#dceafd"/>
+    <rect x="404" y="222" width="332" height="58" rx="10" fill="#e9e0f8"/>
+    <g font-size="16">
+      <text x="42" y="172" font-weight="700">RGPD • aux deux étapes</text>
+      <text x="42" y="192">Quelles données sont nécessaires et leur utilisation est-elle autorisée ?</text>
+      <text x="422" y="246" font-weight="700">AI Act • à l’étape avec IA</text>
+      <text x="422" y="266">Quel usage et quels risques pour le suivi ?</text>
+    </g>
+  </g>
+</svg>

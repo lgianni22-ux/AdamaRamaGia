@@ -11,6 +11,8 @@ L’AI Act ajoute une question sur le système
 Si l’outil classe trop bas un patient qui a besoin d’un suivi rapide, le rappel peut être retardé. L’équipe doit examiner le rôle de la suggestion dans la décision et vérifier si le système relève d’une catégorie à haut risque. Le tri des patients aux urgences figure à l’annexe III. Pour une liste de rappels après la sortie, il faut examiner l’usage prévu et les critères de l’article 6 avant de conclure. Les systèmes à haut risque sont notamment soumis à des exigences de gestion des risques et de contrôle humain. Le RGPD continue de s’appliquer aux données personnelles utilisées par l’IA.
 Source officielle — AI Act, règlement (UE) 2024/1689, articles 2, 6, 9 et 14 et annexe III.
 
+![Pour l’analyse des dossiers, le RGPD encadre l’usage des données personnelles. Pour la priorisation des rappels par IA, le RGPD continue de s’appliquer à ces données et l’AI Act encadre l’usage du système.](illustrations/rgpd-ai-act-rappels.svg)
+
 Petit exercice
 L’équipe ajoute les diagnostics au tableau qui sert à calculer le délai moyen de rappel. Ensuite, une IA classe un patient nécessitant un suivi rapide en bas de sa liste. À quel règlement rattaches-tu chacune des questions soulevées par ces deux situations ?
 
