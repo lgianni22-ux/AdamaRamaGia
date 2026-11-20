@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz · RGPD et AI Act à l’hôpital</title>
+  <style>
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; background: #f1f5fa; color: #14283d; font: 1rem/1.55 system-ui, sans-serif; }
+    main { max-width: 780px; margin: auto; padding: clamp(1rem, 5vw, 3rem); }
+    header { margin-bottom: 2rem; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.75rem); line-height: 1.15; margin: 0; }
+    h2 { font-size: 1.35rem; }
+    fieldset { min-width: 0; margin: 1.5rem 0; padding: .8rem 1rem 1rem; border: 1px solid #acbacb; border-radius: .8rem; background: white; }
+    legend { padding: 0 .4rem; font-weight: 700; }
+    label { display: flex; align-items: baseline; gap: .65rem; padding: .6rem; border: 1px solid #d6e0ea; border-radius: .45rem; margin: .45rem 0; cursor: pointer; }
+    label:hover, label:focus-within { background: #eaf2fd; }
+    input { margin: 0; flex: none; accent-color: #204f82; }
+    :focus-visible { outline: 3px solid #235db0; outline-offset: 3px; }
+    .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+    button { font: inherit; font-weight: 700; cursor: pointer; border: 1px solid #204f82; background: #204f82; color: white; border-radius: .5rem; padding: .65rem 1rem; }
+    button[type="reset"] { background: white; color: #204f82; }
+    #results { padding: 1rem; background: #e4eefb; border-radius: .65rem; margin-bottom: 2rem; }
+    #results h2, #results p, .feedback { margin: 0; }
+    .feedback { margin-top: .8rem; padding: .6rem; border-inline-start: 4px solid #8a321d; background: #fff2ec; }
+    .feedback.correct { border-color: #236347; background: #eaf6ee; }
+    #progress { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>RGPD et AI Act à l’hôpital</h1>
+      <p>20 questions, une seule bonne réponse par question. Réponds à toutes les questions pour obtenir ton score et les explications.</p>
+      <p id="progress" role="status"></p>
+    </header>
+    <noscript>Active JavaScript dans ton navigateur pour utiliser le quiz.</noscript>
+    <section id="results" aria-labelledby="score" hidden>
+      <h2 id="score" tabindex="-1"></h2>
+      <p>Consulte les explications sous chaque question ou recommence le quiz en bas de page.</p>
+    </section>
+    <form id="quiz" hidden>
+      <div id="questions"></div>
+      <div class="actions">
+        <button type="submit">Voir la correction</button>
+        <button type="reset" hidden>Recommencer</button>
+      </div>
+    </form>
+  </main>
+  <script>
+    // Chaque question contient ses choix, l’indice de la bonne réponse et son explication.
+    const topics = [
+      ["Deux règlements pour deux questions", [
+        ["Un hôpital analyse des dossiers identifiables dans un tableur pour mesurer les délais de rappel. Quel règlement encadre cet usage des données ?",
+          ["Le RGPD s’applique dès l’analyse.", "L’AI Act s’applique au tableur utilisé.", "Le RGPD s’appliquera seulement si une IA réutilise les résultats."], 0,
+          "Le RGPD s’applique au traitement des données personnelles, y compris dans un simple tableur."],
+        ["L’hôpital ajoute une IA qui suggère l’ordre des rappels. Quelle question relève directement de l’AI Act ?",
+          ["Quelle base juridique autorise l’usage des dossiers ?", "Quelles données sont nécessaires au calcul d’un délai moyen ?", "Quel est l’usage prévu du système et quels risques ses suggestions créent-elles ?"], 2,
+          "L’AI Act encadre le système d’IA selon son usage. Le RGPD continue de s’appliquer aux données personnelles traitées."]
+      ]],
+      ["Reconnaître une donnée personnelle", [
+        ["Un fichier contient l’âge et la commune de chaque personne. Une liste accessible permet d’associer une ligne à un nom. Comment qualifier cette ligne ?",
+          ["C’est une statistique anonyme puisque le fichier ne contient aucun nom.", "Elle contient des données personnelles puisque la personne est identifiable par recoupement.", "Les données deviennent personnelles seulement après l’ajout du nom dans ce fichier."], 1,
+          "Une personne peut être identifiable indirectement grâce à des informations accessibles par ailleurs."],
+        ["Dans quel cas la mention « diabète de type 2 » constitue-t-elle une donnée de santé personnelle ?",
+          ["Dans le dossier d’une personne identifiable.", "Dans le glossaire d’un manuel de médecine.", "Dans une liste de diagnostics possibles sans lien avec une personne."], 0,
+          "Dans le dossier, la mention renseigne sur l’état de santé d’une personne identifiable."]
+      ]],
+      ["Pseudonymisation et anonymisation", [
+        ["Les noms sont remplacés par des codes. Une table séparée permet de retrouver chaque identité. Quel est le statut du fichier codé ?",
+          ["Il est anonyme pour l’hôpital car la table est conservée à part.", "Il devient anonyme dès que les analystes n’ont pas accès à la table.", "Il est pseudonymisé et reste soumis au RGPD."], 2,
+          "La correspondance entre code et identité reste possible. La séparation de la table réduit le risque de réidentification."],
+        ["Une équipe rapproche une ligne codée d’un bulletin communal grâce à l’âge exact et à la commune. Quel critère ce rapprochement illustre-t-il ?",
+          ["L’inférence.", "La corrélation.", "L’individualisation."], 1,
+          "La corrélation consiste à relier des informations sur une même personne entre deux sources."],
+        ["Tous les membres d’un petit groupe ont le même diagnostic. On sait qu’une personne appartient à ce groupe. Quel risque cette situation illustre-t-elle ?",
+          ["L’inférence.", "L’individualisation.", "La rectification."], 0,
+          "L’appartenance au groupe permet de déduire une information sur cette personne, ici son diagnostic."]
+      ]],
+      ["Finalité et minimisation", [
+        ["Le tableau contient déjà le délai entre chaque sortie et son rappel. Quel champ suffit pour calculer la moyenne des délais ?",
+          ["Le délai et le diagnostic.", "Le délai seul.", "Les deux dates et le nom."], 1,
+          "La moyenne s’obtient à partir des délais individuels. Les autres champs n’entrent pas dans le calcul."],
+        ["Des dossiers ont servi à mesurer les délais. L’hôpital veut ensuite les réutiliser pour prédire les réhospitalisations. Que faut-il examiner ?",
+          ["Seulement la précision attendue du modèle.", "Seulement l’endroit où les dossiers sont stockés.", "Les conditions de réutilisation pour cette nouvelle finalité, dont la base juridique et la condition applicable aux données de santé."], 2,
+          "La prédiction poursuit une autre finalité. Le cours invite à vérifier les conditions de réutilisation, notamment au titre des articles 6 et 9 du RGPD."]
+      ]],
+      ["Accès et droits des personnes", [
+        ["Un analyste calcule uniquement un délai moyen à partir de délais déjà calculés. Quel accès correspond à sa tâche ?",
+          ["Les délais seuls.", "Les délais et la table des identités.", "Les délais et tous les dossiers cliniques."], 0,
+          "On limite les droits d’accès aux informations nécessaires à la tâche."],
+        ["Une personne signale une adresse erronée dans son dossier. Quel droit peut-elle exercer ?",
+          ["Le droit à la portabilité pour faire modifier son adresse.", "Le droit d’opposition pour supprimer automatiquement son dossier.", "Le droit de rectification auprès de l’hôpital."], 2,
+          "Le droit de rectification permet de demander la correction d’une donnée inexacte."],
+        ["Un membre de l’équipe quitte la fonction qui justifiait son accès à la table des correspondances. Quelle action convient ?",
+          ["Conserver l’accès jusqu’à la clôture du projet si le compte est nominatif.", "Retirer l’habilitation devenue inutile.", "Remplacer son accès nominatif par un compte partagé."], 1,
+          "Les habilitations suivent les tâches. Le changement de fonction déclenche une révision des accès."]
+      ]],
+      ["Usages de l’IA à l’hôpital", [
+        ["Un assistant échange avec les visiteurs sur les horaires. Que prévoit l’AI Act pour cette interaction ?",
+          ["Informer les visiteurs qu’ils interagissent avec une IA, sauf si le contexte le rend évident.", "Classer automatiquement l’assistant à haut risque parce qu’il est utilisé dans un hôpital.", "Informer uniquement les soignants de la présence de l’assistant."], 0,
+          "L’article 50 prévoit une information des utilisateurs pour ce type d’interaction, sauf si le contexte la rend évidente."],
+        ["Une IA suggère des priorités aux urgences. Un soignant valide les priorités proposées. Que faut-il vérifier pour examiner les règles applicables ?",
+          ["Uniquement si l’outil explique comment il calcule le score.", "Uniquement si la validation finale appartient au soignant.", "La destination de l’outil et l’influence de ses suggestions sur l’ordre de passage."], 2,
+          "Le tri aux urgences figure à l’annexe III. La validation par un soignant fait partie du contrôle humain et il faut aussi examiner l’influence des suggestions sur le tri."]
+      ]],
+      ["Rappel et cas manqués", [
+        ["Sur 100 personnes, 10 sont réhospitalisées. Le modèle ne signale personne. Quel est son rappel ?",
+          ["90 %, car 90 prédictions sur 100 sont correctes.", "0 %, car aucune des 10 personnes réhospitalisées n’a été signalée.", "10 %, car 10 personnes sur 100 sont réhospitalisées."], 1,
+          "Le rappel divise le nombre de réhospitalisations signalées par le nombre de réhospitalisations observées. Ici, 0 ÷ 10 = 0 %."],
+        ["Parmi 12 personnes réhospitalisées, le modèle en signale 9. Combien y a-t-il de faux négatifs ?",
+          ["3.", "9.", "12."], 0,
+          "Les faux négatifs sont les réhospitalisations que le modèle a manquées. Ici, 12 − 9 = 3."],
+        ["Le modèle manque 3 réhospitalisations sur 6 dans le groupe A et 4 sur 16 dans le groupe B. Quelle affirmation est correcte ?",
+          ["La proportion est plus forte dans le groupe B car il compte plus de cas manqués.", "Les deux proportions sont égales car les deux groupes ont des cas manqués.", "La proportion est plus forte dans le groupe A, avec 50 % contre 25 %."], 2,
+          "Pour chaque groupe, on divise les cas manqués par les réhospitalisations observées. Les effectifs aident à interpréter l’écart."],
+        ["Aucune réhospitalisation n’est observée dans une tranche d’âge du jeu de test. Quel est le taux de cas manqués pour cette tranche ?",
+          ["0 %.", "Il n’est pas calculable.", "100 %."], 1,
+          "Le dénominateur est nul. Il faut au moins une réhospitalisation observée pour calculer ce taux."]
+      ]],
+      ["Évaluer un projet avant de modifier les rappels", [
+        ["Quelles données choisir pour un premier test rétrospectif, une fois leur usage autorisé ?",
+          ["Des dossiers plus récents que ceux de l’entraînement, avec les issues observées.", "Les dossiers déjà utilisés pour entraîner le modèle.", "Des dossiers récents dont on ignore si les personnes ont été réhospitalisées."], 0,
+          "Des dossiers distincts de l’entraînement permettent d’évaluer le modèle. L’issue observée permet de vérifier chaque prédiction."],
+        ["Le modèle obtient 90 % de prédictions correctes. Que faut-il examiner avant de modifier les rappels ?",
+          ["Le taux global seul, en augmentant la taille de l’échantillon.", "Le volume de rappels proposé, indépendamment des réhospitalisations manquées.", "Les cas manqués globalement et par tranche d’âge, ainsi que la capacité de rappel de l’équipe."], 2,
+          "Le taux global peut masquer des cas manqués. Leur nombre et leur répartition doivent être discutés avec l’équipe soignante en tenant compte de sa capacité de rappel."]
+      ]]
+    ];
+
+    const quiz = document.querySelector("#quiz");
+    const questionsContainer = document.querySelector("#questions");
+    const progress = document.querySelector("#progress");
+    const results = document.querySelector("#results");
+    const score = document.querySelector("#score");
+    const submit = quiz.querySelector('[type="submit"]');
+    const reset = quiz.querySelector('[type="reset"]');
+    const items = [];
+
+    for (const [title, questions] of topics) {
+      const section = document.createElement("section");
+      const heading = document.createElement("h2");
+      heading.textContent = title;
+      section.append(heading);
+
+      for (const [prompt, choices, answer, explanation] of questions) {
+        const number = items.length + 1;
+        const fieldset = document.createElement("fieldset");
+        const legend = document.createElement("legend");
+        legend.textContent = number + ". " + prompt;
+        fieldset.append(legend);
+
+        choices.forEach((choice, index) => {
+          const label = document.createElement("label");
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = "question-" + number;
+          input.value = index;
+          input.required = true;
+          label.append(input, choice);
+          fieldset.append(label);
+        });
+
+        const feedback = document.createElement("p");
+        feedback.className = "feedback";
+        feedback.hidden = true;
+        fieldset.append(feedback);
+        section.append(fieldset);
+        items.push({ fieldset, feedback, choices, answer, explanation });
+      }
+      questionsContainer.append(section);
+    }
+
+    function updateProgress() {
+      const count = quiz.querySelectorAll("input:checked").length;
+      progress.textContent = count + " / " + items.length + " questions répondues";
+    }
+
+    quiz.addEventListener("change", updateProgress);
+    quiz.addEventListener("submit", (event) => {
+      event.preventDefault();
+      let correctCount = 0;
+      for (const { fieldset, feedback, choices, answer, explanation } of items) {
+        const correct = Number(fieldset.querySelector("input:checked").value) === answer;
+        correctCount += Number(correct);
+        feedback.classList.toggle("correct", correct);
+        feedback.textContent = correct
+          ? "Bonne réponse. " + explanation
+          : "Réponse attendue — " + choices[answer] + " " + explanation;
+        feedback.hidden = false;
+        fieldset.disabled = true;
+      }
+      score.textContent = "Ton score est de " + correctCount + " sur " + items.length;
+      results.hidden = false;
+      submit.hidden = true;
+      reset.hidden = false;
+      score.focus();
+    });
+
+    quiz.addEventListener("reset", () => {
+      for (const { fieldset, feedback } of items) {
+        fieldset.disabled = false;
+        feedback.hidden = true;
+      }
+      results.hidden = true;
+      submit.hidden = false;
+      reset.hidden = true;
+      // Le navigateur efface les réponses après l’événement reset.
+      queueMicrotask(() => {
+        updateProgress();
+        items[0].fieldset.querySelector("input").focus();
+      });
+    });
+
+    updateProgress();
+    quiz.hidden = false;
+  </script>
+</body>
+</html>
