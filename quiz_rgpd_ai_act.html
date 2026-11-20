@@ -21,9 +21,9 @@
     .actions { display: flex; flex-wrap: wrap; gap: .75rem; }
     button { font: inherit; font-weight: 700; cursor: pointer; border: 1px solid #204f82; background: #204f82; color: white; border-radius: .5rem; padding: .65rem 1rem; }
     button[type="reset"] { background: white; color: #204f82; }
-    #results { padding: 1rem; background: #e4eefb; border-radius: .65rem; margin-bottom: 2rem; }
-    #results h2, #results p, .feedback { margin: 0; }
-    .feedback { margin-top: .8rem; padding: .6rem; border-inline-start: 4px solid #8a321d; background: #fff2ec; }
+    #results { padding: 1rem; background: #e4eefb; border-radius: .65rem; margin-bottom: 1rem; }
+    #results h2 { margin: 0; }
+    .feedback { margin: .8rem 0 0; padding: .6rem; border-inline-start: 4px solid #8a321d; background: #fff2ec; }
     .feedback.correct { border-color: #236347; background: #eaf6ee; }
     #progress { font-weight: 700; }
   </style>
@@ -32,18 +32,16 @@
   <main>
     <header>
       <h1>RGPD et AI Act à l’hôpital</h1>
-      <p>20 questions, une seule bonne réponse par question. Réponds à toutes les questions pour obtenir ton score et les explications.</p>
+      <p>Choisis une réponse par question pour voir tout de suite la correction et son explication. Chaque choix est définitif pour cette tentative. Ton score s’affiche après les 20 réponses.</p>
       <p id="progress" role="status"></p>
     </header>
     <noscript>Active JavaScript dans ton navigateur pour utiliser le quiz.</noscript>
-    <section id="results" aria-labelledby="score" hidden>
-      <h2 id="score" tabindex="-1"></h2>
-      <p>Consulte les explications sous chaque question ou recommence le quiz en bas de page.</p>
-    </section>
     <form id="quiz" hidden>
       <div id="questions"></div>
+      <section id="results" aria-labelledby="score" hidden>
+        <h2 id="score" role="status"></h2>
+      </section>
       <div class="actions">
-        <button type="submit">Voir la correction</button>
         <button type="reset" hidden>Recommencer</button>
       </div>
     </form>
@@ -134,9 +132,10 @@
     const progress = document.querySelector("#progress");
     const results = document.querySelector("#results");
     const score = document.querySelector("#score");
-    const submit = quiz.querySelector('[type="submit"]');
     const reset = quiz.querySelector('[type="reset"]');
     const items = [];
+    let answeredCount = 0;
+    let correctCount = 0;
 
     for (const [title, questions] of topics) {
       const section = document.createElement("section");
@@ -157,54 +156,54 @@
           input.type = "radio";
           input.name = "question-" + number;
           input.value = index;
-          input.required = true;
           label.append(input, choice);
           fieldset.append(label);
         });
 
         const feedback = document.createElement("p");
         feedback.className = "feedback";
+        feedback.tabIndex = -1;
         feedback.hidden = true;
         fieldset.append(feedback);
         section.append(fieldset);
-        items.push({ fieldset, feedback, choices, answer, explanation });
+        items.push({ fieldset, feedback });
+
+        fieldset.addEventListener("change", (event) => {
+          const correct = Number(event.target.value) === answer;
+          answeredCount += 1;
+          correctCount += Number(correct);
+          feedback.classList.toggle("correct", correct);
+          feedback.textContent = correct
+            ? "Bonne réponse. " + explanation
+            : "Réponse incorrecte. La bonne réponse est « " + choices[answer] + " » " + explanation;
+          feedback.hidden = false;
+          fieldset.disabled = true;
+          feedback.focus();
+          reset.hidden = false;
+          updateProgress();
+
+          if (answeredCount === items.length) {
+            results.hidden = false;
+            score.textContent = "Ton score est de " + correctCount + " sur " + items.length;
+          }
+        });
       }
       questionsContainer.append(section);
     }
 
     function updateProgress() {
-      const count = quiz.querySelectorAll("input:checked").length;
-      progress.textContent = count + " / " + items.length + " questions répondues";
+      progress.textContent = answeredCount + " / " + items.length + " questions répondues";
     }
-
-    quiz.addEventListener("change", updateProgress);
-    quiz.addEventListener("submit", (event) => {
-      event.preventDefault();
-      let correctCount = 0;
-      for (const { fieldset, feedback, choices, answer, explanation } of items) {
-        const correct = Number(fieldset.querySelector("input:checked").value) === answer;
-        correctCount += Number(correct);
-        feedback.classList.toggle("correct", correct);
-        feedback.textContent = correct
-          ? "Bonne réponse. " + explanation
-          : "Réponse attendue — " + choices[answer] + " " + explanation;
-        feedback.hidden = false;
-        fieldset.disabled = true;
-      }
-      score.textContent = "Ton score est de " + correctCount + " sur " + items.length;
-      results.hidden = false;
-      submit.hidden = true;
-      reset.hidden = false;
-      score.focus();
-    });
 
     quiz.addEventListener("reset", () => {
       for (const { fieldset, feedback } of items) {
         fieldset.disabled = false;
         feedback.hidden = true;
       }
+      answeredCount = 0;
+      correctCount = 0;
       results.hidden = true;
-      submit.hidden = false;
+      score.textContent = "";
       reset.hidden = true;
       // Le navigateur efface les réponses après l’événement reset.
       queueMicrotask(() => {
